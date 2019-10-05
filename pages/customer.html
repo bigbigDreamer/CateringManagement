@@ -1,12 +1,37 @@
-<div class="customer">
-    <h1>我是顾客</h1>
+<div class="customer" data-v="customer">
+
 </div>
 
+
+<script src="./public/js/apis/customer.js"></script>
+<script src="./public/js/apis/order.js"></script>
 <script>
+    $(function () {
+        // customer.findAll(function (data) {
+        //     console.log(data);
+        // });
+        // customer.deleteById(5, function (data) {
+        //     console.log(data)
+        // })
+        // customer.query({
+        //     page: 1,
+        //     pageSize: 4
+        // }, function (data) {
+        //     console.log(data, '分页请求');
+        // })
 
+        customer.batchDelete([1,2], function (data) {
+            console.log(data, '批量删除');
+        })
 
+        order.findAll(function (data) {
+            console.log(data,'订单')
+        })
+    })
 </script>
 
 <style>
+    div[data-v='customer'] {
 
+    }
 </style>

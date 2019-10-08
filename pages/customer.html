@@ -1,37 +1,77 @@
-<div class="customer" data-v="customer">
+<div class="customer d-flex flex-column" data-v="customer">
+    <!--  删除按钮组  -->
+    <div class="btns">
+        <button class="btn btn-warning delAll">批量删除</button>
+    </div>
+    <!--表格容器-->
+    <div class="table_container">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">
+                    <input type="checkbox" class="selectAll"/>
+                </th>
+                <th scope="col">姓名</th>
+                <th scope="col">电话</th>
+                <th scope="col">密码</th>
+                <th scope="col">状态</th>
+                <th scope="col">照片</th>
+                <th scope="col">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
 
+    <!-- 分页按钮容器 -->
+    <div class="pagination">
+        <button type="button" class="btn btn-primary prevBtn">
+             Prev
+        </button>
+        &emsp;
+        <button type="button" class="btn btn-primary nextBtn">
+            Next
+        </button>
+    </div>
 </div>
 
 
 <script src="./public/js/apis/customer.js"></script>
-<script src="./public/js/apis/order.js"></script>
+<script src="./public/js/services/customer/data-process.js"></script>
 <script>
     $(function () {
-        // customer.findAll(function (data) {
-        //     console.log(data);
-        // });
-        // customer.deleteById(5, function (data) {
-        //     console.log(data)
-        // })
-        // customer.query({
-        //     page: 1,
-        //     pageSize: 4
-        // }, function (data) {
-        //     console.log(data, '分页请求');
-        // })
+        PubSub.subscribe('appendFinished', function (msg) {
+            if (msg) {
+                $('.inputData').hide();
+                customerData.deleteById();
+                customerData.update();
+                customerData.batchDelete();
 
-        customer.batchDelete([1,2], function (data) {
-            console.log(data, '批量删除');
-        })
+            }
+        });
 
-        order.findAll(function (data) {
-            console.log(data,'订单')
-        })
+        customerData.dataInit();
     })
 </script>
 
 <style>
     div[data-v='customer'] {
 
+    }
+
+    /*按钮组的样式*/
+    div[data-v='customer'] > .btns {
+        margin-bottom: 1rem;
+    }
+
+    /*表格样式*/
+    div[data-v='customer'] > .table_container {
+
+    }
+
+    /*分页按钮*/
+    div[data-v='customer'] > .pagination {
+       margin: 0 auto;
     }
 </style>

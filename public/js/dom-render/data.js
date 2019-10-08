@@ -20,25 +20,25 @@ var navList = [
     {
         name: '食品管理',
         icon: 'iconfont icon-shipin',
-        url:'./pages/food.html',
+        url: './pages/food.html',
         key: 'food'
     },
     {
         name: '地址管理',
         icon: 'iconfont icon-dizhi',
-        url:'./pages/address.html',
+        url: './pages/address.html',
         key: 'address'
     },
     {
         name: '评论管理',
         icon: 'iconfont icon-pinglun1',
-        url:'./pages/comment.html',
+        url: './pages/comment.html',
         key: 'comment'
     },
     {
         name: '客服管理',
         icon: 'iconfont icon-fuwuyuan',
-        url:'./pages/waiter.html',
+        url: './pages/waiter.html',
         key: 'waiter'
     }
 ];
